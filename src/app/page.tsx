@@ -1,12 +1,13 @@
-import Image from 'next/image'
+import Banner from '@/components/pages/home_components/Banner'
+import Navbar from '@/components/shared/Navbar'
+
 
 
 export default function Home() {
   return (
     <main >
-
-
-      hello
+      <Navbar />
+      <Banner />
     </main>
   )
 }
