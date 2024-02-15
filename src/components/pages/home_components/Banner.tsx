@@ -1,3 +1,4 @@
+import CommonSectionTitle from "@/components/ui/CommonSectionTitle";
 import Image from "next/image";
 import { BsArrowRight } from "react-icons/bs";
 import { FaGraduationCap, FaUsers } from "react-icons/fa";
@@ -11,11 +12,7 @@ export default function Banner() {
                 <Image className="banner_vector_world absolute left-0 top-[80px]" src={'/assets/vectors/bshape_01.png'} width={50} height={100} alt="vector" />
                 <div className="my-auto">
                     <Image className=" absolute lg:left-[35%] left-[80%] lg:top-36 top-20" src={'/assets/vectors/bshape_02.png'} width={40} height={100} alt="vector" />
-                    <p className="bg-blue-50 mb-3 text-blue-500 font-semibold w-fit px-3 rounded text-lg">100% Satisfaction Guarantee</p>
-                    <h3 className=" text-4xl text-blue-900 font-bold">Learn<span className="text-blue-500 mx-3">Skills</span>
-                        From
-
-                        <br /> Our Top Instructors</h3>
+                    <CommonSectionTitle subTitle="100% Satisfaction Guarantee" title_1="Upgrade your" highlight="Skills" title_2="From Our Top Instructors" />
                     <p className="my-7 text-lg text-slate-500">Borem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattisBorem ipsum dolor sit amet consectetur adipiscing area we followelit.</p>
                     <div className="lg:flex lg:flex-row flex-col gap-x-8 ">
                         <button className="text-white  bg-blue-500 px-5 py-3 rounded text-lg flex gap-3 items-center">Explore Courses  <BsArrowRight className="mt-1" /></button>
