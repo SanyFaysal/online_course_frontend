@@ -2,7 +2,7 @@ import { IStudent } from "@/types/studentTypes";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
-const studentApi = baseApi.injectEndpoints({
+const userApi = baseApi.injectEndpoints({
     endpoints: (build: any) => ({
         createStudent: build.mutation({
             query: (data: IStudent) => {
@@ -15,10 +15,20 @@ const studentApi = baseApi.injectEndpoints({
             },
             invalidatesTags: [tagTypes.user]
         }),
+        loginUser: build.mutation({
+            query: (data: Partial<IStudent>) => {
+                return ({
+                    url: `/user/login/`,
+                    method: "POST",
+                    body: data
+                })
+            },
+            invalidatesTags: [tagTypes.user]
+        }),
 
 
     }),
 
 })
 
-export const { useCreateStudentMutation } = studentApi;
+export const { useCreateStudentMutation, useLoginUserMutation } = userApi;
