@@ -1,6 +1,6 @@
-export enum USER_ROLE{
+export enum USER_ROLE {
     STUDENT = "student",
-    FACULTY = "faculty",
+    TEACHER = "teacher",
     ADMIN = "admin",
-    SUPER_ADMIN = "super_admin"
+
 }
