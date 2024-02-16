@@ -24,7 +24,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const dispatch = useAppDispatch()
     const router = useRouter();
 
-    const { user } = useAppSelector(state => state.auth)
+    const { user }: any = useAppSelector(state => state.auth)
     const [collapsed, setCollapsed] = useState(false);
 
     const {

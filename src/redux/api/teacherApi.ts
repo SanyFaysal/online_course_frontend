@@ -27,6 +27,15 @@ const teacherApi = baseApi.injectEndpoints({
             },
             providesTags: [tagTypes.teacherCourses]
         }),
+        getAllTeacherRequests: build.query({
+            query: () => {
+                return ({
+                    url: `/user/teachers/`,
+                    method: "GET",
+                })
+            },
+            providesTags: [tagTypes.teacherRequests]
+        }),
         getSingleTeacher: build.query({
             query: ({ token, userId }: Record<string, string>) => {
                 return ({
@@ -43,4 +52,8 @@ const teacherApi = baseApi.injectEndpoints({
     overrideExisting: true
 })
 
-export const { useCreateTeacherRequestMutation, useGetTeacherCoursesQuery, useGetSingleTeacherQuery } = teacherApi;
+export const {
+    useCreateTeacherRequestMutation,
+    useGetTeacherCoursesQuery,
+    useGetSingleTeacherQuery,
+    useGetAllTeacherRequestsQuery } = teacherApi;
