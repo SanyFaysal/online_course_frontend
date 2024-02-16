@@ -1,12 +1,20 @@
 'use client'
 
-import { Breadcrumb, Form, Input } from "antd";
+import { useCreateTeacherRequestMutation } from "@/redux/api/teacherApi";
+import { Breadcrumb, Form, Input, message } from "antd";
 import Image from "next/image";
 
 export default function BecomeInstructor() {
-
-    const handleSubmitRequest = (values: any) => {
-        console.log({ values })
+    const [createRequest] = useCreateTeacherRequestMutation();
+    const handleSubmitRequest = async (values: any) => {
+        try {
+            const res: any = await createRequest(values).unwrap()
+            if (res?.id) {
+                message.success("Request sent")
+            }
+        } catch (error: any) {
+            message.error(error?.data?.phone_number[0])
+        }
     }
     return (
         <div className="h-full">
