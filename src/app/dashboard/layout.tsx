@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Avatar, Breadcrumb, Dropdown, Layout, Menu, MenuProps, theme } from 'antd';
-import { dashboardMenuItems } from '@/constants/dashboardSideMenuOptions';
+import { dashboardMenuItems } from '@/lib/dashboardSideMenuOptions';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import Link from 'next/link';
 import { PiGearSix, PiSignOutLight, PiUserCircle } from 'react-icons/pi';
@@ -12,7 +12,7 @@ import { FaAngleDown } from 'react-icons/fa';
 import { removeFromLocalStorage } from '@/utils/local-storage';
 import { accessToken } from '@/constants/storageKey';
 import { fetchUserByRole, logoutUser } from '@/redux/slices/userSlice';
-import { useRouter } from 'next/navigation';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -20,8 +20,10 @@ const { Header, Content, Footer, Sider } = Layout;
 
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+    const path = usePathname();
     const dispatch = useAppDispatch()
-    const router = useRouter()
+    const router = useRouter();
+
     const { user } = useAppSelector(state => state.auth)
     const [collapsed, setCollapsed] = useState(false);
 
@@ -49,7 +51,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <h1 className='capitalize mt-1 font-semibold'>{user?.name}</h1>
                 <p className='text-xs'>{user?.mobile_number}</p>
                 <div className='flex flex-col  text-start  my-2 w-full '>
-                    <Link href={'/dashboard/profile/account'} className='flex gap-1 text-sm items-center hover:bg-blue-500 p-2 rounded hover:text-white'><PiUserCircle className='text-lg' />My Profile</Link>
+                    <Link href={`/dashboard/profile/${user?.role}`} className='flex gap-1 text-sm items-center hover:bg-blue-500 p-2 rounded hover:text-white'><PiUserCircle className='text-lg' />My Profile</Link>
                     <div onClick={handleLogout} className='flex gap-1 cursor-pointer text-sm items-center hover:bg-blue-500 p-2 rounded hover:text-white'><PiSignOutLight className='text-lg' />Sign out</div>
                 </div>
             </div>,
@@ -59,16 +61,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     ];
     return (
         <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                <Link href={'/'} className=" text-white my-7 block text-center">Logo </Link>
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={dashboardMenuItems(user?.role)} />
+            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} >
+                <Link href={'/'} className=" text-white my-5 block text-center sticky top-7">Logo </Link>
+                <Menu className=' sticky top-16' theme="dark" defaultSelectedKeys={[path]} mode="inline" items={dashboardMenuItems(user?.role)} />
             </Sider>
             <Layout>
-                <Header style={{ padding: '0px 25px', background: colorBgContainer }} className='flex justify-between w-full items-center pr-[-10px]'>
+                <Header style={{ padding: '0px 25px', background: colorBgContainer }} className='flex justify-between w-full items-center pr-[-10px] sticky top-0'>
                     <p className='text-xl capitalize'>{user?.role} {" "}Dashboard</p>
                     <Dropdown menu={{ items }} trigger={['click']}>
                         <div onClick={(e) => e.preventDefault()}>
-                            <div className='flex justify-between items-center gap-1 bg-gray-100 h-12 px-2 py-2 rounded'>
+                            <div className='flex justify-between items-center gap-1  h-12 px-2 py-2 rounded'>
                                 <Avatar style={{ backgroundColor: '#217eff' }}>{user?.name?.slice(0, 1)}</Avatar>
                                 <div>
                                     <div className='flex items-center gap-4 '>

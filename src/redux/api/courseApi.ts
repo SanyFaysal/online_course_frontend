@@ -15,7 +15,7 @@ const courseApi = baseApi.injectEndpoints({
                     body: data
                 })
             },
-            invalidatesTags: [tagTypes.student]
+            invalidatesTags: [tagTypes.studentCourses]
         }),
         createCourse: build.mutation({
             query: ({ data, token }: any) => {
@@ -44,20 +44,17 @@ const courseApi = baseApi.injectEndpoints({
         }),
 
         getStudentCourses: build.query({
-            query: (token: string) => {
+            query: ({ token, studentId }: any) => {
                 return ({
-                    url: `/user/student-course/${55}`,
+                    url: `/user/student-courses/${studentId}/`,
                     method: "GET",
                     headers: {
                         Authorization: `Bearer ${token}`,
                     }
                 })
             },
-            providesTags: [tagTypes.courses]
+            providesTags: [tagTypes.studentCourses]
         }),
-
-
-
     }),
 
 })
@@ -65,6 +62,6 @@ const courseApi = baseApi.injectEndpoints({
 export const {
     useGetAllCoursesQuery,
     useEnrollCourseMutation,
-    useGetStudentCoursesMutation,
+    useGetStudentCoursesQuery,
     useCreateCourseMutation
 } = courseApi;
