@@ -48,6 +48,18 @@ const teacherApi = baseApi.injectEndpoints({
             },
             providesTags: [tagTypes.teacher]
         }),
+        // approveTeacherRequest: build.query({
+        //     query: ({  }: Record<string, string>) => {
+        //         return ({
+        //             url: `/user/teacher/${userId}/`,
+        //             method: "GET",
+        //             headers: {
+        //                 Authorization: `Bearer ${token}`,
+        //             }
+        //         })
+        //     },
+        //     providesTags: [tagTypes.teacher]
+        // }),
     }),
     overrideExisting: true
 })
