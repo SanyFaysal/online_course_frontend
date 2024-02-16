@@ -21,7 +21,7 @@ export default function StudentRegistration() {
             const res: any = await createStudent(values).unwrap();
             if (res?.user?.id) {
                 message.success('Registration Successful')
-                router.push(`/dashboard/${res?.user?.role}`)
+                router.push(`/dashboard/${res?.user?.role}/home`)
             }
         } catch (error: any) {
             showErrorModal(error?.data?.errors)

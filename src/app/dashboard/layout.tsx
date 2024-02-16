@@ -30,7 +30,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 <p className='text-xs'>{user?.mobile_number}</p>
                 <div className='flex flex-col  text-start  my-2 w-full '>
                     <Link href={'/dashboard/profile/account'} className='flex gap-1 text-sm items-center hover:bg-blue-500 p-2 rounded hover:text-white'><PiUserCircle className='text-lg' />My Profile</Link>
-                    <p className='flex gap-1 cursor-pointer text-sm items-center hover:bg-blue-500 p-2 rounded hover:text-white'><PiSignOutLight className='text-lg' />Sign out</p>
+                    <div className='flex gap-1 cursor-pointer text-sm items-center hover:bg-blue-500 p-2 rounded hover:text-white'><PiSignOutLight className='text-lg' />Sign out</div>
                 </div>
             </div>,
             key: '0',
@@ -45,7 +45,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </Sider>
             <Layout>
                 <Header style={{ padding: '0px 25px', background: colorBgContainer }} className='flex justify-between w-full items-center pr-[-10px]'>
-                    <h2 className='text-xl capitalize'>{user?.role} {" "}Dashboard</h2>
+                    <p className='text-xl capitalize'>{user?.role} {" "}Dashboard</p>
                     <Dropdown menu={{ items }} trigger={['click']}>
                         <div onClick={(e) => e.preventDefault()}>
                             <div className='flex justify-between items-center gap-1 bg-gray-100 h-12 px-2 py-2 rounded'>

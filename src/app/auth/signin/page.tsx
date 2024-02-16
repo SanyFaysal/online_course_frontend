@@ -25,7 +25,7 @@ export default function Signin() {
                 message.success(res?.msg)
                 console.log({ res })
                 setToLocalStorage(accessToken, res?.token?.access)
-                router.push(`/dashboard/`)
+                router.push(`/dashboard/${res?.user?.role}/home`)
             }
         } catch (error: any) {
             showErrorModal(error?.data?.errors)
