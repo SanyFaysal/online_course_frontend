@@ -30,8 +30,8 @@ function getItem(
 
 
 const studentItems = [
-    getItem(<Link href={'/dashboard/home'}>Home</Link>, '1', <CiHome />),
-    getItem(<Link href={'/my-courses'}>My Courses</Link>, '2', <RxDashboard />),
+    getItem(<Link href={'/dashboard/student/home'}>Home</Link>, '1', <CiHome />),
+    getItem(<Link href={'/dashboard/student/my-courses'}>My Courses</Link>, '2', <RxDashboard />),
 ]
 
 const teacherItems = [

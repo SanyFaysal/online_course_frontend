@@ -1,22 +1,22 @@
-import { IStudent } from "@/types/studentTypes";
+import { IEnrollStudent, IStudent } from "@/types/studentTypes";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
 const courseApi = baseApi.injectEndpoints({
     endpoints: (build: any) => ({
-        // createStudent: build.mutation({
-        //     query: ({data, token}:{data:IStudent, token:string}) => {
-        //         return ({
-        //             url: `/user/register/`,
-        //             method: "POST",
-        //             headers: {
-        //                 authorization: `Bearer ${token}`,
-        //             }
-        //             body: data
-        //         })
-        //     },
-        //     invalidatesTags: [tagTypes.user]
-        // }),
+        enrollCourse: build.mutation({
+            query: ({ data, token }: { data: IEnrollStudent, token: string }) => {
+                return ({
+                    url: `/user/enroll-course/`,
+                    method: "POST",
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                    body: data
+                })
+            },
+            invalidatesTags: [tagTypes.student]
+        }),
         getAllCourses: build.query({
             query: (token: string) => {
                 return ({
@@ -30,9 +30,23 @@ const courseApi = baseApi.injectEndpoints({
             providesTags: [tagTypes.courses]
         }),
 
+        getStudentCourses: build.query({
+            query: (token: string) => {
+                return ({
+                    url: `/user/student-course/${55}`,
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    }
+                })
+            },
+            providesTags: [tagTypes.courses]
+        }),
+
+
 
     }),
 
 })
 
-export const { useGetAllCoursesQuery } = courseApi;
+export const { useGetAllCoursesQuery, useEnrollCourseMutation, useGetStudentCoursesMutation } = courseApi;

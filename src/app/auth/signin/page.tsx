@@ -2,6 +2,8 @@
 
 import { accessToken } from '@/constants/storageKey';
 import { useCreateStudentMutation, useLoginUserMutation } from '@/redux/api/userApi';
+import { useAppDispatch } from '@/redux/hooks';
+import { setUser } from '@/redux/slices/userSlice';
 import { IStudent } from '@/types/studentTypes';
 import { setToLocalStorage } from '@/utils/local-storage';
 import { showErrorModal } from '@/utils/showError';
@@ -16,6 +18,7 @@ import { BsArrowLeft } from 'react-icons/bs';
 
 export default function Signin() {
     const router = useRouter()
+    const dispatch = useAppDispatch()
     const [loginUser] = useLoginUserMutation()
 
     const handleLogin = async (values: any) => {
@@ -23,8 +26,8 @@ export default function Signin() {
             const res: any = await loginUser(values).unwrap();
             if (res?.user?.id) {
                 message.success(res?.msg)
-                console.log({ res })
                 setToLocalStorage(accessToken, res?.token?.access)
+                dispatch(setUser(res?.user))
                 router.push(`/dashboard/${res?.user?.role}/home`)
             }
         } catch (error: any) {

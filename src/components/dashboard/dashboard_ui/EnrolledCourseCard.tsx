@@ -7,28 +7,9 @@ import { message } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function CourseCard({ course }: any) {
-    const router = useRouter()
-    const { user } = useAppSelector(state => state.auth)
-    const token = getFromLocalStorage(accessToken)
-    const [enrollCourse] = useEnrollCourseMutation()
+export default function EnrolledCourseCard({ course }: any) {
 
-    const handleEnrollCourse = async (courseId: string) => {
-        try {
-            const data: IEnrollStudent = {
-                student: user?.id,
-                course: courseId,
-                status: 'enrolled'
-            }
-            const res: any = await enrollCourse({ token, data }).unwrap()
-            if (res?.id) {
-                message.success('Enrolled success');
-                router.push('/dashboard/student/my-courses')
-            }
-        } catch (error) {
 
-        }
-    }
     return (
         <div className="bg-gray-100 rounded-lg  ">
             <div className="">
@@ -37,7 +18,7 @@ export default function CourseCard({ course }: any) {
             <div className="px-3 py-2 mt-[-25px] z-[999]">
                 <h1 className="text-sm font-semibold  min-h-10">{course?.title}</h1>
                 <div className="flex justify-end">
-                    <button onClick={() => handleEnrollCourse(course?.id)} className="bg-blue-500 text-white  duration-300 px-3 py-1 rounded ">Enroll</button>
+                    <button className="bg-purple-200 text-purple-500  duration-300 px-3 py-1 rounded ">Continue</button>
                 </div>
             </div>
         </div>

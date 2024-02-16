@@ -1,5 +1,7 @@
 import Banner from "@/components/pages/home_components/Banner";
 import DiscoverInstructors from "@/components/pages/home_components/DiscoverInstructors";
+import JoinNewsletters from "@/components/pages/home_components/JoinNewsletters";
+import JoinUs from "@/components/pages/home_components/JoinUs";
 import OurCourses from "@/components/pages/home_components/OurCourses";
 import Navbar from "@/components/shared/Navbar";
 
@@ -10,6 +12,8 @@ export default function Home() {
             <Banner />
             <DiscoverInstructors />
             <OurCourses />
+            <JoinUs />
+            <JoinNewsletters />
         </main>
     )
 }
