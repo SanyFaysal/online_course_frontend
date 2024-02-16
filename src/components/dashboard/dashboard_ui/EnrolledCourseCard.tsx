@@ -18,7 +18,7 @@ export default function EnrolledCourseCard({ course }: any) {
             <div className="px-3 py-2 mt-[-25px] z-[999]">
                 <h1 className="text-sm font-semibold  min-h-10">{course?.title}</h1>
                 <div className="flex justify-end">
-                    <button className="bg-purple-200 text-purple-500  duration-300 px-3 py-1 rounded ">Continue</button>
+                    <button className="bg-purple-200 text-purple-500  duration-300 px-2 py-1 rounded ">View</button>
                 </div>
             </div>
         </div>

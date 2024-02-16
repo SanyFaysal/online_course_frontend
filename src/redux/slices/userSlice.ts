@@ -10,11 +10,13 @@ type InitialStateType = {
     isSuccess: boolean,
     isError: boolean,
     error: string,
-    user: any
+    user: any,
+    userByRole: any
 }
 
 const initialState: InitialStateType = {
     user: {},
+    userByRole: {},
     isLoading: false,
     isSuccess: false,
     isError: false,
@@ -25,7 +27,13 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async (token: string
     const decoded: any = decodedToken(token)
     const response = await fetch(`${getBaseUrl()}user/single/${decoded?.user_id}/`);
     const data = await response.json();
+    console.log(data)
     return data;
+});
+export const fetchUserByRole = createAsyncThunk('user/fetchUserByRole', async ({ userId, role }: any) => {
+    const response = await fetch(`${getBaseUrl()}user/${role}/${userId}/`);
+    const data = await response.json();
+    return data[role];
 });
 
 export const userSlice = createSlice({
@@ -37,6 +45,7 @@ export const userSlice = createSlice({
         },
         logoutUser: (state) => {
             state.user = {}
+            state.userByRole = {}
         },
     },
     extraReducers: (builder) => {
@@ -56,6 +65,26 @@ export const userSlice = createSlice({
 
             })
             .addCase(fetchUser.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.isSuccess = false;
+                state.error = action.error.message as string;
+            })
+            .addCase(fetchUserByRole.pending, (state) => {
+                state.isLoading = true;
+                state.isError = false;
+                state.isSuccess = false;
+                state.error = '';
+            })
+            .addCase(fetchUserByRole.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.isError = false;
+                state.isSuccess = true;
+                state.userByRole = action.payload;
+                state.error = '';
+
+            })
+            .addCase(fetchUserByRole.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = false;
                 state.isSuccess = false;

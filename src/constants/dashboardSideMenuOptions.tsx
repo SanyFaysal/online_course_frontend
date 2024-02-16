@@ -35,8 +35,8 @@ const studentItems = [
 ]
 
 const teacherItems = [
-    getItem(<Link href={'/home'}>Home</Link>, '1', <CiHome />),
-    getItem(<Link href={'/create-course'}>Create Course</Link>, '2', <CiHome />),
+    getItem(<Link href={'/dashboard/teacher/home'}>Home</Link>, '1', <CiHome />),
+    getItem(<Link href={'/dashboard/teacher/create-course'}>Create Course</Link>, '2', <CiHome />),
 ]
 const adminItems = [
     getItem(<Link href={'/home'}>Home</Link>, '1', <CiHome />),

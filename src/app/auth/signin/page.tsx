@@ -24,7 +24,7 @@ export default function Signin() {
     const handleLogin = async (values: any) => {
         try {
             const res: any = await loginUser(values).unwrap();
-            if (res?.user?.id) {
+            if (res) {
                 message.success(res?.msg)
                 setToLocalStorage(accessToken, res?.token?.access)
                 dispatch(setUser(res?.user))

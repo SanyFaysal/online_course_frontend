@@ -17,6 +17,19 @@ const courseApi = baseApi.injectEndpoints({
             },
             invalidatesTags: [tagTypes.student]
         }),
+        createCourse: build.mutation({
+            query: ({ data, token }: any) => {
+                return ({
+                    url: `/user/courses/`,
+                    method: "POST",
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                    body: data
+                })
+            },
+            invalidatesTags: [tagTypes.teacherCourses, tagTypes.courses]
+        }),
         getAllCourses: build.query({
             query: (token: string) => {
                 return ({
@@ -49,4 +62,9 @@ const courseApi = baseApi.injectEndpoints({
 
 })
 
-export const { useGetAllCoursesQuery, useEnrollCourseMutation, useGetStudentCoursesMutation } = courseApi;
+export const {
+    useGetAllCoursesQuery,
+    useEnrollCourseMutation,
+    useGetStudentCoursesMutation,
+    useCreateCourseMutation
+} = courseApi;
