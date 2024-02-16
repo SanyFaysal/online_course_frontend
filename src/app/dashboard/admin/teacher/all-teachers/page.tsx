@@ -5,6 +5,8 @@ import { Space, Table, Tag } from 'antd';
 import type { TableProps } from 'antd';
 import { formatDate } from '@/utils/formatDate';
 import { useGetAllTeacherRequestsQuery } from '@/redux/api/teacherApi';
+import { filterTeacher } from '@/utils/filterTeacher';
+import Link from 'next/link';
 
 
 
@@ -13,7 +15,7 @@ const columns: TableProps<any>['columns'] = [
         title: 'Full Name',
         dataIndex: 'fullName',
         key: 'name',
-        render: (text) => <a>{text}</a>,
+        render: (text) => <p>{text}</p>,
     },
     {
         title: 'Email',
@@ -40,7 +42,7 @@ const columns: TableProps<any>['columns'] = [
         dataIndex: 'approved_as_teacher',
         render: (_, record) => (
             <Space size="middle">
-                <p className='capitalize'>{`${record?.approved_as_teacher}`}</p>
+                <p className='capitalize  px-3 '>{`${record?.approved_as_teacher}`}</p>
             </Space>
         ),
     },
@@ -49,16 +51,20 @@ const columns: TableProps<any>['columns'] = [
         key: 'action',
         render: (_, record) => (
             <Space size="middle">
-                <a>Invite {record.name}</a>
-                <a>Delete</a>
+                <Link href={''}>Details</Link>
+
             </Space>
         ),
     },
 ];
 export default function AllTeachers() {
-    const { data } = useGetAllTeacherRequestsQuery(undefined)
+    const { data }: any = useGetAllTeacherRequestsQuery(undefined)
+    const teachers = filterTeacher(data, false)
     return (
-        <Table columns={columns} dataSource={data as []} />
+        <div>
+            <h1 className='text-xl mb-2'>All Teachers</h1>
+            <Table columns={columns} dataSource={teachers as []} />
+        </div>
     )
 };
 
