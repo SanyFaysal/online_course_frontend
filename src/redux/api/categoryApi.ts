@@ -4,19 +4,19 @@ import { baseApi } from "./baseApi";
 
 const categoryApi = baseApi.injectEndpoints({
     endpoints: (build: any) => ({
-        // enrollCourse: build.mutation({
-        //     query: ({ data, token }: { data: IEnrollStudent, token: string }) => {
-        //         return ({
-        //             url: `/user/enroll-course/`,
-        //             method: "POST",
-        //             headers: {
-        //                 authorization: `Bearer ${token}`,
-        //             },
-        //             body: data
-        //         })
-        //     },
-        //     invalidatesTags: [tagTypes.student]
-        // }),
+        createCategory: build.mutation({
+            query: ({ data, token }: { data: IEnrollStudent, token: string }) => {
+                return ({
+                    url: `/user/categories/`,
+                    method: "POST",
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                    body: data
+                })
+            },
+            invalidatesTags: [tagTypes.categories]
+        }),
         getAllCategories: build.query({
             query: (token: string) => {
                 return ({
@@ -30,18 +30,7 @@ const categoryApi = baseApi.injectEndpoints({
             providesTags: [tagTypes.categories]
         }),
 
-        // getStudentCourses: build.query({
-        //     query: (token: string) => {
-        //         return ({
-        //             url: `/user/student-course/${55}`,
-        //             method: "GET",
-        //             headers: {
-        //                 Authorization: `Bearer ${token}`,
-        //             }
-        //         })
-        //     },
-        //     providesTags: [tagTypes.courses]
-        // }),
+
 
 
 
@@ -49,4 +38,4 @@ const categoryApi = baseApi.injectEndpoints({
 
 })
 
-export const { useGetAllCategoriesQuery } = categoryApi;
+export const { useGetAllCategoriesQuery, useCreateCategoryMutation } = categoryApi;

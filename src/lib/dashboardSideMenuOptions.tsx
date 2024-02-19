@@ -42,13 +42,13 @@ const teacherItems = [
 ]
 const adminItems = [
     getItem(<Link href={'/dashboard/admin/home'}>Home</Link>, '1', <CiHome />),
-    getItem(<Link href={'/dashboard/admin/teacher'}>Teachers</Link>, '/dashboard/admin/teacher', <UserOutlined />, [
+    getItem(<p>Teachers</p>, '/dashboard/admin/teacher', <UserOutlined />, [
         getItem(<Link href={'/dashboard/admin/teacher/all-teachers'}>All Teachers</Link>, '/dashboard/admin/all-teachers'),
         getItem(<Link href={'/dashboard/admin/teacher/teachers-requests'}>Teachers Requests</Link>, '/dashboard/admin/teachers-requests'),
     ]),
     getItem('Categories', '/dashboard/admin/categories', <UserOutlined />, [
-        getItem('All Categories', '/dashboard/admin/all-categories'),
-        getItem('Add Category', '/dashboard/admin/add-category'),
+        getItem(<Link href={'/dashboard/admin/categories/all-categories'}>All Categories</Link>, '/dashboard/admin/categories/all-categories'),
+        getItem(<Link href={'/dashboard/admin/categories/add-category'}>Add category</Link>, '/dashboard/admin/categories/add-category'),
     ]),
 ]
 
