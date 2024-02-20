@@ -13,6 +13,8 @@ import { removeFromLocalStorage } from '@/utils/local-storage';
 import { accessToken } from '@/constants/storageKey';
 import { fetchUserByRole, logoutUser } from '@/redux/slices/userSlice';
 import { useParams, usePathname, useRouter } from 'next/navigation';
+import { IoMenuOutline } from 'react-icons/io5';
+import ResponsiveDrawer from '@/components/dashboard/dashboard_ui/ResponsiveDrawer';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -23,7 +25,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const path = usePathname();
     const dispatch = useAppDispatch()
     const router = useRouter();
-
+    const [openDrawer, setOpenDrawer] = useState<boolean>(false)
     const { user }: any = useAppSelector(state => state.auth)
     const [collapsed, setCollapsed] = useState(false);
 
@@ -61,12 +63,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     ];
     return (
         <Layout style={{ minHeight: '100vh' }}>
-            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} >
+            <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} className='hidden lg:block'>
                 <Link href={'/'} className=" text-white my-5 block text-center sticky top-7">Logo </Link>
                 <Menu className=' sticky top-16' theme="dark" defaultSelectedKeys={[path]} mode="inline" items={dashboardMenuItems(user?.role)} />
             </Sider>
+            <ResponsiveDrawer openDrawer={openDrawer} setOpenDrawer={setOpenDrawer} path={path} />
             <Layout>
                 <Header style={{ padding: '0px 25px', background: colorBgContainer }} className='flex justify-between w-full items-center pr-[-10px] sticky top-0'>
+                    <div className='lg:hidden block '>
+                        <IoMenuOutline onClick={() => setOpenDrawer(true)} className='text-xl' />
+                    </div>
                     <p className='text-xl capitalize'>{user?.role} {" "}Dashboard</p>
                     <Dropdown menu={{ items }} trigger={['click']}>
                         <div onClick={(e) => e.preventDefault()}>
@@ -74,9 +80,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                                 <Avatar style={{ backgroundColor: '#217eff' }}>{user?.name?.slice(0, 1)}</Avatar>
                                 <div>
                                     <div className='flex items-center gap-4 '>
-                                        <div className='flex flex-col items-start justify-center'>
-                                            <p className='mb-[-45px] font-semibold'>{user?.name}</p>
-                                            <p className='font-semibold capitalize'>{user?.role}</p>
+                                        <div className='lg:flex hidden flex-col items-start justify-center'>
+                                            <p className='lg:mb-[-45px] font-semibold'>{user?.name}</p>
+                                            <p className='font-semibold capitalize '>{user?.role}</p>
                                         </div>
                                         <FaAngleDown />
                                     </div>

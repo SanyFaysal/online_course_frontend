@@ -11,13 +11,13 @@ export default function AdminDashboardHome() {
     return (
         <div>
 
-            <div className="mb-5 grid grid-cols-3 gap-2">
+            <div className="mb-5 grid lg:grid-cols-3 grid-cols-1 gap-2">
                 <DashboardOverViewCard title={'Total Courses'} count={150} icon={<p>hel</p>} subTitle="hi" />
                 <DashboardOverViewCard title={'Total Enrollment'} count={150} icon={<p>hel</p>} subTitle="hi" />
                 <DashboardOverViewCard title={'Pending Teachers'} count={150} icon={<p>hel</p>} subTitle="hi" />
 
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid lg:grid-cols-2 grid-cols-1 gap-2">
                 <UserPieChart />
                 <RecentEnrollment />
             </div>

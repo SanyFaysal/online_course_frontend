@@ -11,7 +11,7 @@ export default function RecentEnrollment() {
             <div className="grid grid-cols-3 gap-x-3 gap-y-14 text-sm mb-2">
                 <div>
                     <h1>Abdullah Al Talha</h1>
-                    <p className="text-sm">abu.faysal@gmail.com</p>
+                    <p className="text-xs">faysal@gmail.com</p>
                 </div>
                 <h1>Self Development Course</h1>
                 <h1 className="">12, feb at 2.23PM</h1>
@@ -19,7 +19,7 @@ export default function RecentEnrollment() {
             <div className="grid grid-cols-3 gap-x-3 mb-2">
                 <div>
                     <h1>Abdullah Al Talha</h1>
-                    <p className="text-sm">abu.faysal@gmail.com</p>
+                    <p className="text-sm">faysal@gmail.com</p>
                 </div>
                 <h1>Self Development Course</h1>
                 <h1 className="">12, feb at 2.23PM</h1>
@@ -27,7 +27,7 @@ export default function RecentEnrollment() {
             <div className="grid grid-cols-3 gap-x-3 mb-2">
                 <div>
                     <h1>Abdullah Al Talha</h1>
-                    <p className="text-sm">abu.faysal@gmail.com</p>
+                    <p className="text-sm">faysal@gmail.com</p>
                 </div>
                 <h1>Self Development Course</h1>
                 <h1 className="">12, feb at 2.23PM</h1>
@@ -35,7 +35,7 @@ export default function RecentEnrollment() {
             <div className="grid grid-cols-3 gap-x-3 mb-2">
                 <div>
                     <h1>Abdullah Al Talha</h1>
-                    <p className="text-sm">abu.faysal@gmail.com</p>
+                    <p className="text-sm">faysal@gmail.com</p>
                 </div>
                 <h1>Self Development Course</h1>
                 <h1 className="">12, feb at 2.23PM</h1>
@@ -43,7 +43,7 @@ export default function RecentEnrollment() {
             <div className="grid grid-cols-3 gap-x-3 mb-2">
                 <div>
                     <h1>Abdullah Al Talha</h1>
-                    <p className="text-sm">abu.faysal@gmail.com</p>
+                    <p className="text-sm">faysal@gmail.com</p>
                 </div>
                 <h1>Self Development Course</h1>
                 <h1 className="">12, feb at 2.23PM</h1>
@@ -51,7 +51,7 @@ export default function RecentEnrollment() {
             <div className="grid grid-cols-3 gap-x-3 mb-2">
                 <div>
                     <h1>Abdullah Al Talha</h1>
-                    <p className="text-sm">abu.faysal@gmail.com</p>
+                    <p className="text-sm">faysal@gmail.com</p>
                 </div>
                 <h1>Self Development Course</h1>
                 <h1 className="">12, feb at 2.23PM</h1>
