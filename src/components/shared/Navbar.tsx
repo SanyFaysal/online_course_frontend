@@ -5,6 +5,7 @@ import { logoutUser } from "@/redux/slices/userSlice";
 import { removeFromLocalStorage } from "@/utils/local-storage";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { FaSignOutAlt } from "react-icons/fa";
 import { IoMdLogIn } from "react-icons/io";
 import { LuLayoutDashboard } from "react-icons/lu";
 
@@ -36,8 +37,21 @@ export default function Navbar() {
                 }
             </div>
             <div className="flex lg:hidden gap-5">
-                <p><LuLayoutDashboard className="text-2xl" /></p>
-                <p><IoMdLogIn className="text-2xl" /></p>
+
+
+
+                {
+                    user?.id ? <>
+                        <Link href={`/dashboard/${user?.role}/home`} className="flex gap-1 items-center text-xl"> <LuLayoutDashboard /></Link>
+                        <p onClick={handleLogout} className="flex gap-1 items-center cursor-pointer text-xl"><FaSignOutAlt /> </p>
+                    </> : <>
+                        <Link href={'/auth/registration'} className="flex gap-1 items-center ">Register as Student </Link>
+                        <Link href={'/auth/signin'} className="flex gap-1 items-center ">Signin </Link>
+
+                    </>
+                }
+                {/* <p><LuLayoutDashboard className="text-2xl" /></p>
+                <p><IoMdLogIn className="text-2xl" /></p> */}
             </div>
         </div>
 

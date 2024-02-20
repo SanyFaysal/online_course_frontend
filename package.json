@@ -10,14 +10,19 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.17.0",
+    "@radix-ui/react-slot": "^1.0.2",
     "@reduxjs/toolkit": "^1.9.5",
     "@types/node": "20.6.3",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "antd": "^5.9.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "embla-carousel-react": "^8.0.0-rc23",
     "eslint": "8.49.0",
     "eslint-config-next": "13.5.2",
     "jwt-decode": "^4.0.0",
+    "lucide-react": "^0.334.0",
     "next": "13.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -25,6 +30,8 @@
     "react-icons": "^5.0.1",
     "react-redux": "^8.1.3",
     "recharts": "^2.12.0",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2"
   },
   "devDependencies": {
