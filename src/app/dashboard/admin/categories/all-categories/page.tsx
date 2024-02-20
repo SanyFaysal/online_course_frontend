@@ -48,7 +48,7 @@ export default function AllCategories() {
     return (
         <div>
             <h1 className='text-xl mb-2'>All Categories</h1>
-            <Table columns={columns} dataSource={data as []} />
+            <Table columns={columns} dataSource={data as []} className='overflow-x-auto' />
         </div>
     )
 };

@@ -41,7 +41,7 @@ export default function BecomeInstructor() {
                     ]}
                 />
             </div>
-            <div className=" mx-16 my-6 rounded-lg p-5 bg-slate-100 ">
+            <div className=" lg:mx-16  mx-2 lg:my-6 my-0 rounded-lg p-5 bg-slate-100 ">
                 <h1 className="text-3xl font-semibold text-gray-800">Be a Part of Us</h1>
                 <p className="mb-6">Fill up the form and send us a request</p>
                 <Form
@@ -52,7 +52,7 @@ export default function BecomeInstructor() {
                     labelCol={{ flex: '25px' }}
                     autoComplete="off"
                     layout='vertical'
-                    className='  mb-0 grid grid-cols-3 gap-x-5 '
+                    className='  mb-0 lg:grid lg:grid-cols-3 grid-cols-1 gap-x-5 '
                 >
                     <Form.Item<any>
                         label="Full Name"

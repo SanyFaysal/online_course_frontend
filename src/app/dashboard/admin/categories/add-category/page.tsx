@@ -37,7 +37,7 @@ export default function AddCategory() {
                 initialValues={{ remember: true }}
                 onFinish={onFinish}
                 layout='vertical'
-                className='w-[60%]'
+                className='lg:w-[60%]'
                 autoComplete="off"
 
             >

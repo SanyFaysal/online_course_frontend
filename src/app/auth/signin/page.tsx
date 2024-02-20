@@ -37,13 +37,13 @@ export default function Signin() {
 
 
     return (
-        <div className='w-full grid grid-cols-2 gap-5'>
+        <div className='w-full grid lg:grid-cols-2 gap-5'>
 
-            <div className='mx-auto bg-gray-200 w-full h-screen flex flex-col justify-center '>
-                <Link href={'/'} className='flex items-center ml-5 gap-1 '><BsArrowLeft />Back to Home</Link>
-                <Image src={'/assets/vectors/register_vector.png'} width={500} height={200} alt='register_vector' className='mx-auto' />
+            <div className='mx-auto lg:bg-gray-200 w-full lg:h-screen h-fit flex  flex-col justify-center '>
+                <Link href={'/'} className='flex items-center ml-5 gap-1 lg:my-0 my-5'><BsArrowLeft />Back to Home</Link>
+                <Image src={'/assets/vectors/register_vector.png'} width={500} height={200} alt='register_vector' className='mx-auto lg:block hidden' />
             </div>
-            <div className='my-auto flex flex-col justify-start items-center'>
+            <div className='my-auto flex flex-col lg:justify-center lg:mt-26 mt-14 h-[70vh] items-center'>
                 <div className='mb-8 text-center'>
                     <h1 className='text-4xl mb-2 font-semibold text-slate-800'>Login</h1>
                     <p className='text-gray-500'>Join our community by login your account.</p>
@@ -56,7 +56,7 @@ export default function Signin() {
                     labelCol={{ flex: '25px' }}
                     autoComplete="off"
                     layout='vertical'
-                    className='w-[70%]  mx-auto mb-0'
+                    className='lg:w-[70%] w-[90%]  mx-auto mb-0'
                 >
                     <Form.Item<Partial<IStudent>>
                         label="Mobile Number"
@@ -85,7 +85,7 @@ export default function Signin() {
                 </Form>
 
                 <div>
-                    <h2 className='text-center '>Don't have any account ? <Link href={'/auth/registration'} className='text-blue-500'>Sign in</Link></h2>
+                    <h2 className='text-center '>Don't have any account ? <Link href={'/auth/registration'} className='text-blue-500'>Sign up</Link></h2>
                 </div>
             </div>
         </div >

@@ -49,7 +49,7 @@ export default function CreateCourse() {
                     labelCol={{ flex: '25px' }}
                     autoComplete="off"
                     layout='vertical'
-                    className='  mb-0 grid grid-cols-5 gap-x-5 '
+                    className='  mb-0 grid lg:grid-cols-5 gap-x-5 '
                 >
                     <Form.Item label="Select" name="category" className="col-span-2">
                         <Select>

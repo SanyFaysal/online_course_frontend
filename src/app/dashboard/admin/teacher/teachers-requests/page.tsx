@@ -69,7 +69,7 @@ export default function TeacherRequests() {
     return (
         <div>
             <h1 className='text-xl mb-2'>All Teachers Requests</h1>
-            <Table columns={columns} dataSource={teachers as []} />
+            <Table columns={columns} dataSource={teachers as []} className='overflow-x-auto' />
         </div>
     )
 };

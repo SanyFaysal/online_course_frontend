@@ -31,7 +31,7 @@ export default function DiscoverInstructors() {
             <div>
                 <CommonSectionTitle subTitle="Get To Know About Us" title_1="Discover Top" highlight="Instructors" title_2="Around The World" />
                 <p className="my-5 text-lg text-slate-500">Borem ipsum dolor sit amet, consectetur adipiscing eliawe awUt elit ellus, luctus nec ullamcorper mattisBorem ipsum dolor awes atnse awctetur adipis we followelit. Borem.</p>
-                <div className="grid grid-cols-2 lg:gap-5 gap-2">
+                <div className="grid lg:grid-cols-2 lg:gap-5 gap-5">
                     <AboutUsCard icon={<BiSupport className=" " />} title="2000+" subTitle="Expert Turors" color='blue' />
                     <AboutUsCard icon={<MdOutlinePlayLesson className=" " />} title="1200+" subTitle="Top Lesson" color='green' />
                     <AboutUsCard icon={<GoVideo className=" " />} title="2000+" subTitle="Video Support" color='orange' />

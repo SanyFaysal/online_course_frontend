@@ -30,13 +30,13 @@ export default function StudentRegistration() {
 
 
     return (
-        <div className='w-full grid grid-cols-2 gap-5'>
+        <div className='w-full grid lg:grid-cols-2 gap-5'>
 
-            <div className='mx-auto bg-gray-200 w-full h-screen flex flex-col justify-center '>
-                <Link href={'/'} className='flex items-center ml-5 gap-1 '><BsArrowLeft />Back to Home</Link>
-                <Image src={'/assets/vectors/register_vector.png'} width={500} height={200} alt='register_vector' className='mx-auto' />
+            <div className='mx-auto lg:bg-gray-200 w-full lg:h-screen h-fit flex flex-col justify-center '>
+                <Link href={'/'} className='flex items-center ml-5 gap-1 my-5 lg:my-0'><BsArrowLeft />Back to Home</Link>
+                <Image src={'/assets/vectors/register_vector.png'} width={500} height={200} alt='register_vector' className='mx-auto hidden lg:block' />
             </div>
-            <div className='my-auto flex flex-col justify-start items-center'>
+            <div className='my-auto flex flex-col justify-start items-center h-[70vh] lg:mt-20 mt-6'>
                 <div className='mb-8 text-center'>
                     <h1 className='text-4xl mb-2 font-semibold text-slate-800'>Student Register</h1>
                     <p className='text-gray-500'>Join our community by creating your account.</p>
@@ -49,7 +49,7 @@ export default function StudentRegistration() {
                     labelCol={{ flex: '25px' }}
                     autoComplete="off"
                     layout='vertical'
-                    className='w-[70%]  mx-auto mb-0'
+                    className='lg:w-[70%] w-[90%]  mx-auto mb-0'
                 >
                     <Form.Item<IStudent>
                         label="Name"
