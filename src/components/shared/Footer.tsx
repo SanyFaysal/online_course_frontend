@@ -4,7 +4,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaFacebook, FaPhone, FaYoutube } from "react-icons/fa";
 import { MdEmail, MdOutlineEmail, MdPhone } from "react-icons/md";
 import { TbPointFilled } from "react-icons/tb";
-
+import Link from "next/link";
 export default function Footer() {
     return (
         <footer className=" bg-gray-100 py-8 lg:px-16 px-6 ">
@@ -20,8 +20,8 @@ export default function Footer() {
                 <div className="">
                     <h5 className="text-lg font-semibold mb-2">Quick Links</h5>
                     <div className="flex flex-col gap-2">
-                        <p><TbPointFilled className="inline  text-sm text-gray-500" />Become an Instructor</p>
-                        <p><TbPointFilled className="inline  text-sm text-gray-500" />Register as a Student</p>
+                        <Link href='/become-instructor'><TbPointFilled className="inline  text-sm text-gray-500" />Become an Instructor</Link>
+                        <Link href='/auth/register'><TbPointFilled className="inline  text-sm text-gray-500" />Register as a Student</Link>
 
 
                     </div>
