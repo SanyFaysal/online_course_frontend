@@ -15,6 +15,7 @@ import { fetchUserByRole, logoutUser } from '@/redux/slices/userSlice';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { IoMenuOutline } from 'react-icons/io5';
 import ResponsiveDrawer from '@/components/dashboard/dashboard_ui/ResponsiveDrawer';
+import Loading from '../loading';
 
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -26,7 +27,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const dispatch = useAppDispatch()
     const router = useRouter();
     const [openDrawer, setOpenDrawer] = useState<boolean>(false)
-    const { user }: any = useAppSelector(state => state.auth)
+    const { user, isLoading, isSuccess }: any = useAppSelector(state => state.auth)
     const [collapsed, setCollapsed] = useState(false);
 
     const {
@@ -45,7 +46,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         dispatch(fetchUserByRole({ userId: user?.id, role: user?.role }));
     }, [user])
 
-
     const items: MenuProps['items'] = [
         {
             label: <div className='flex flex-col justify-center items-center cursor-pointer  pb-2'>
@@ -61,6 +61,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         },
 
     ];
+
+    if (isLoading) {
+        return <><Loading /></>
+    }
+    if (!isLoading && !isSuccess) {
+        return <div className='h-screen w-screen flex flex-col justify-center items-center '>
+            <p>You are not authorized</p>
+            <Link href='/'>Go to home</Link>
+        </div>
+    }
+
+
     return (
         <Layout style={{ minHeight: '100vh' }}>
             <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)} className='hidden lg:block'>

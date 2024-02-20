@@ -17,7 +17,7 @@ type InitialStateType = {
 const initialState: InitialStateType = {
     user: {},
     userByRole: {},
-    isLoading: false,
+    isLoading: true,
     isSuccess: false,
     isError: false,
     error: ""
