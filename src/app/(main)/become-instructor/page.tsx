@@ -2,6 +2,7 @@
 
 import { useCreateTeacherRequestMutation } from "@/redux/api/teacherApi";
 import { Breadcrumb, Form, Input, message } from "antd";
+import TextArea from "antd/es/input/TextArea";
 import Image from "next/image";
 
 export default function BecomeInstructor() {
@@ -18,76 +19,92 @@ export default function BecomeInstructor() {
     }
     return (
         <div className="h-full">
-            <div className="bg-blue-600 py-20 relative text-white overflow-hidden">
+            <div className="becomeInstructor   py-8  relative text-white overflow-hidden backdrop-filter:blur(4px)">
+
+
                 <Image src={'/assets/vectors/bshape_01.png'} width={50} height={100} alt="vector"
-                    className="absolute  left-[60%] top-8 opacity-50" />
-                <Image src={'/assets/vectors/cta_shape01.svg'} width={200} height={100} alt="vector"
-                    className="absolute left-[-75px]  top-0 opacity-10" />
-                <Image src={'/assets/vectors/cta_shape01.svg'} width={200} height={100} alt="vector"
-                    className="absolute right-[-75px]  top-0 opacity-10" />
-                <h1 className="text-3xl text-center ">Become an Instructor</h1>
-                <Breadcrumb
-                    className="flex justify-center text-slate-200"
-                    separator={<p className="text-slate-200">/</p>}
-                    items={[
-                        {
-                            title: <p className="text-slate-200">Home</p>,
-                        },
-                        {
-                            title: <p className="text-slate-200">Become Instructor</p>,
+                    className="absolute left-[15px]  top-16 opacity-20" />
 
-                        },
+                <div className="grid grid-cols-2  w-full text-black ">
+                    <div className="flex flex-col justify-start  items-start text-start  lg:pl-10 pt-20">
+                        <h1 className="text-3xl">Become an <span className="text-blue-500 font-semibold">Instructor</span></h1>
+                        <h1 className="text-3xl font-semibold">Join Our Teaching Community</h1>
+                        <p className="mb-2 mt-5">Share your expertise, inspire learners, and make a difference. Fill out the form to request to become an instructor.</p>
 
-                    ]}
-                />
-            </div>
-            <div className=" lg:mx-16  mx-2 lg:my-6 my-0 rounded-lg p-5 bg-slate-100 ">
-                <h1 className="text-3xl font-semibold text-gray-800">Be a Part of Us</h1>
-                <p className="mb-6">Fill up the form and send us a request</p>
-                <Form
-                    name="basic"
-                    labelWrap
-                    initialValues={{ remember: true }}
-                    onFinish={handleSubmitRequest}
-                    labelCol={{ flex: '25px' }}
-                    autoComplete="off"
-                    layout='vertical'
-                    className='  mb-0 lg:grid lg:grid-cols-3 grid-cols-1 gap-x-5 '
-                >
-                    <Form.Item<any>
-                        label="Full Name"
-                        name="fullName"
-                        className=""
-                        rules={[{ required: true, message: 'Please input your Full name' }]}
-                    // style={{ marginBottom: '10px' }}
-                    >
-                        <Input className="py-2" />
-                    </Form.Item>
-                    <Form.Item<any>
-                        label="Email"
-                        name="email"
-                        rules={[{ required: true, message: 'Please input your email' }]}
-                    // style={{ marginBottom: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item>
-                    <Form.Item<any>
-                        label="Phone Number"
-                        name="phone_number"
-                        rules={[{ required: true, message: 'Please input your phone number' }]}
-                    // style={{ marginBottom: '10px' }}
-                    >
-                        <Input />
-                    </Form.Item>
+                        <p className="mb-6 mt-1 "><span className="font-bold">Apply: </span>Fill out the form to request to become an instructor. Our team will review your application and get back to you soon.</p>
+                    </div>
 
 
-                    <Form.Item className="col-span-3 flex justify-end">
-                        <button type='submit' className='w-fit px-3 py-2 text-white py-1 rounded  text-md bg-blue-500'>
-                            Send Request
-                        </button>
 
-                    </Form.Item>
-                </Form>
+                    <div className=" lg:mx-16   mx-2 lg:my-6 my-0 rounded-lg px-5 pb-7 pt-14  bg-white ">
+
+                        <Form
+                            name="basic"
+                            labelWrap
+                            initialValues={{ remember: true }}
+                            onFinish={handleSubmitRequest}
+                            labelCol={{ flex: '25px' }}
+                            autoComplete="off"
+                            layout='vertical'
+                            className='  mb-0 lg:grid lg:grid-cols-2 grid-cols-1 gap-x-5  '
+                        >
+                            <Form.Item<any>
+                                label="Full Name"
+                                name="fullName"
+                                className="w-full "
+                                rules={[{ required: true, message: 'Please input your Full name' }]}
+                            // style={{ marginBottom: '10px' }}
+                            >
+                                <Input className="py-2 w-full" />
+                            </Form.Item>
+                            <Form.Item<any>
+                                label="Email"
+                                name="email"
+
+                                rules={[{ required: true, message: 'Please input your email' }]}
+                            // style={{ marginBottom: '10px' }}
+                            >
+                                <Input className="py-2" />
+                            </Form.Item>
+                            <Form.Item<any>
+                                label="Phone Number"
+                                name="phoneNumber"
+                                rules={[{ required: true, message: 'Please input your phone number' }]}
+                            // style={{ marginBottom: '10px' }}
+                            >
+                                <Input className="py-2" />
+                            </Form.Item>
+
+                            <Form.Item<any>
+                                label="CV/Resume link"
+                                name="cv_resume"
+                                className=""
+                                rules={[{ required: true, message: 'Please input your phone number' }]}
+                            // style={{ marginBottom: '10px' }}
+                            >
+                                <Input className="py-2" />
+                            </Form.Item>
+
+                            <Form.Item<any>
+                                label="Bio"
+                                name="bio"
+                                className="col-span-2"
+                                rules={[{ required: true, message: 'Please input your phone number' }]}
+                            // style={{ marginBottom: '10px' }}
+                            >
+                                <TextArea />
+                            </Form.Item>
+                            <Form.Item className="col-span-2 flex justify-end">
+                                <button type='submit' className='w-fit px-3 py-2 text-white py-1 rounded  text-md bg-blue-500'>
+                                    Send Request
+                                </button>
+
+                            </Form.Item>
+                        </Form>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     )

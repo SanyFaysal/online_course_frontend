@@ -3,28 +3,30 @@
 import { useCreateStudentMutation } from '@/redux/api/userApi';
 import { IStudent } from '@/types/studentTypes';
 import { showErrorModal } from '@/utils/showError';
-import { Form, Input, message } from 'antd'
+import { Form, Input, message, Segmented } from 'antd'
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react'
+import React, { useState } from 'react'
 import { BsArrowLeft } from 'react-icons/bs';
 
 
 
 export default function StudentRegistration() {
     const router = useRouter()
+    const [role, setRole] = useState("Student")
     const [createStudent] = useCreateStudentMutation()
 
     const onFinish = async (values: any) => {
         try {
-            const res: any = await createStudent(values).unwrap();
-            if (res?.user?.id) {
-                message.success('Registration Successful')
-                router.push(`/dashboard/${res?.user?.role}/home`)
-            }
+            // const res: any = await createStudent(values).unwrap();
+            console.log(values)
+            // if (res?.user?.id) {
+            message.success('Registration Successful')
+            //     router.push(`/dashboard/${res?.user?.role}/home`)
+            // }
         } catch (error: any) {
-            showErrorModal(error?.data?.errors)
+            // showErrorModal(error?.data?.errors)
         }
     };
 
@@ -38,8 +40,7 @@ export default function StudentRegistration() {
             </div>
             <div className='my-auto flex flex-col justify-start items-center h-[70vh] lg:mt-20 mt-6'>
                 <div className='mb-8 text-center'>
-                    <h1 className='text-4xl mb-2 font-semibold text-slate-800'>Student Register</h1>
-                    <p className='text-gray-500'>Join our community by creating your account.</p>
+                    <h1 className='text-2xl mb-2 font-semibold text-slate-800'>Register as    <span className='text-blue-500'>Student</span> </h1>
                 </div>
                 <Form
                     name="basic"
@@ -62,9 +63,9 @@ export default function StudentRegistration() {
                     </Form.Item>
 
                     <Form.Item<IStudent>
-                        label="Mobile Number"
-                        name="mobile_number"
-                        rules={[{ required: true, message: 'Please input your mobile number!' }]}
+                        label="Email"
+                        name="email"
+                        rules={[{ required: true, message: 'Please input your email!' }]}
                         style={{ marginBottom: '15px' }}
                     >
                         <Input />

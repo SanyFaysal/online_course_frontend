@@ -1,5 +1,5 @@
 export type IStudent = {
-    mobile_number: string;
+    email: string;
     name: string;
     password: string;
     password2: string;

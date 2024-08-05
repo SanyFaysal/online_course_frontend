@@ -22,17 +22,18 @@ export default function Signin() {
     const [loginUser] = useLoginUserMutation()
 
     const handleLogin = async (values: any) => {
-        try {
-            const res: any = await loginUser(values).unwrap();
-            if (res) {
-                message.success(res?.msg)
-                setToLocalStorage(accessToken, res?.token?.access)
-                dispatch(setUser(res?.user))
-                router.push(`/dashboard/${res?.user?.role}/home`)
-            }
-        } catch (error: any) {
-            showErrorModal(error?.data?.errors)
-        }
+        console.log(values)
+        // try {
+        //     const res: any = await loginUser(values).unwrap();
+        //     if (res) {
+        //         message.success(res?.msg)
+        //         setToLocalStorage(accessToken, res?.token?.access)
+        //         dispatch(setUser(res?.user))
+        //         router.push(`/dashboard/${res?.user?.role}/home`)
+        //     }
+        // } catch (error: any) {
+        //     showErrorModal(error?.data?.errors)
+        // }
     };
 
 
@@ -59,9 +60,9 @@ export default function Signin() {
                     className='lg:w-[70%] w-[90%]  mx-auto mb-0'
                 >
                     <Form.Item<Partial<IStudent>>
-                        label="Mobile Number"
-                        name="mobile_number"
-                        rules={[{ required: true, message: 'Please input your mobile number' }]}
+                        label="Email"
+                        name="email"
+                        rules={[{ required: true, message: 'Please input your email' }]}
                     // style={{ marginBottom: '10px' }}
                     >
                         <Input />
