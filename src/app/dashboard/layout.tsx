@@ -11,7 +11,7 @@ import { BiDownArrow } from 'react-icons/bi';
 import { FaAngleDown } from 'react-icons/fa';
 import { removeFromLocalStorage } from '@/utils/local-storage';
 import { accessToken } from '@/constants/storageKey';
-import { fetchUserByRole, logoutUser } from '@/redux/slices/userSlice';
+import { fetchUser, fetchUserByRole, logoutUser } from '@/redux/slices/userSlice';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { IoMenuOutline } from 'react-icons/io5';
 import ResponsiveDrawer from '@/components/dashboard/dashboard_ui/ResponsiveDrawer';
@@ -28,6 +28,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const router = useRouter();
     const [openDrawer, setOpenDrawer] = useState<boolean>(false)
     const { user, isLoading, isSuccess }: any = useAppSelector(state => state.auth)
+    const all: any = useAppSelector(state => state.auth)
+
     const [collapsed, setCollapsed] = useState(false);
 
     const {
@@ -43,8 +45,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
     useEffect(() => {
         //@ts-ignore
-        dispatch(fetchUserByRole({ userId: user?.id, role: user?.role }));
-    }, [user])
+        dispatch(fetchUser(accessToken));
+    }, [accessToken])
 
     const items: MenuProps['items'] = [
         {
@@ -65,13 +67,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     if (isLoading) {
         return <><Loading /></>
     }
+
     if (!isLoading && !isSuccess) {
         return <div className='h-screen w-screen flex flex-col justify-center items-center '>
             <p>You are not authorized</p>
             <Link href='/'>Go to home</Link>
         </div>
     }
-
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
@@ -89,11 +91,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                     <Dropdown menu={{ items }} trigger={['click']}>
                         <div onClick={(e) => e.preventDefault()}>
                             <div className='flex justify-between items-center gap-1  h-12 px-2 py-2 rounded'>
-                                <Avatar style={{ backgroundColor: '#217eff' }}>{user?.name?.slice(0, 1)}</Avatar>
+                                <Avatar style={{ backgroundColor: '#217eff' }}>{user?.firstName?.slice(0, 1)}</Avatar>
                                 <div>
                                     <div className='flex items-center gap-4 '>
                                         <div className='lg:flex hidden flex-col items-start justify-center'>
-                                            <p className='lg:mb-[-45px] font-semibold'>{user?.name}</p>
+                                            <p className='lg:mb-[-45px] font-semibold'>{user?.firstName}</p>
                                             <p className='font-semibold capitalize '>{user?.role}</p>
                                         </div>
                                         <FaAngleDown />

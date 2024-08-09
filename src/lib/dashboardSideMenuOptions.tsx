@@ -35,6 +35,10 @@ const studentItems = [
     getItem(<Link href={'/dashboard/student/home'}>Home</Link>, '/dashboard/student/home', <CiHome />),
     getItem(<Link href={'/dashboard/student/my-courses'}>My Courses</Link>, '/dashboard/student/my-courses', <RxDashboard />),
 ]
+const userItems = [
+    getItem(<Link href={'/dashboard/student'}>Home</Link>, '/dashboard/student/home', <CiHome />),
+    getItem(<Link href={'/dashboard/student/my-courses'}>My Courses</Link>, '/dashboard/student/my-courses', <RxDashboard />),
+]
 
 const teacherItems = [
     getItem(<Link href={'/dashboard/teacher/home'}>Home</Link>, '/dashboard/teacher/home', <CiHome />),
@@ -42,6 +46,7 @@ const teacherItems = [
 ]
 const adminItems = [
     getItem(<Link href={'/dashboard/admin/home'}>Home</Link>, '1', <CiHome />),
+    getItem(<Link href={'/dashboard/admin/manage-users'}>Manage Users</Link>, '2', <TeamOutlined />),
     getItem(<p>Teachers</p>, '/dashboard/admin/teacher', <UserOutlined />, [
         getItem(<Link href={'/dashboard/admin/teacher/all-teachers'}>All Teachers</Link>, '/dashboard/admin/all-teachers'),
         getItem(<Link href={'/dashboard/admin/teacher/teachers-requests'}>Teachers Requests</Link>, '/dashboard/admin/teachers-requests'),

@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Toaster } from 'react-hot-toast'
 import type { Metadata } from "next";
 import Providers from "@/lib/Providers";
 import Auth from "@/components/auth/Auth";
@@ -18,7 +19,10 @@ export default function RootLayout({
     <Providers>
       <Auth>
         <html lang="en">
-          <body>{children}</body>
+          <body>
+            {children}
+            <Toaster />
+          </body>
         </html>
       </Auth>
     </Providers>

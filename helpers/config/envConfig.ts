@@ -1,3 +1,3 @@
 export const getBaseUrl = (): any => {
-    return "https://softmaxshop.com/"; // Replace with a default API URL
+    return "http://localhost:5000/api/v1"; // Replace with a default API URL
 };

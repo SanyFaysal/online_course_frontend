@@ -12,6 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react'
+import toast from 'react-hot-toast';
 import { BsArrowLeft } from 'react-icons/bs';
 
 
@@ -23,17 +24,20 @@ export default function Signin() {
 
     const handleLogin = async (values: any) => {
         console.log(values)
-        // try {
-        //     const res: any = await loginUser(values).unwrap();
-        //     if (res) {
-        //         message.success(res?.msg)
-        //         setToLocalStorage(accessToken, res?.token?.access)
-        //         dispatch(setUser(res?.user))
-        //         router.push(`/dashboard/${res?.user?.role}/home`)
-        //     }
-        // } catch (error: any) {
-        //     showErrorModal(error?.data?.errors)
-        // }
+        try {
+            const res: any = await loginUser(values).unwrap();
+            console.log(res)
+            if (res) {
+                toast.success(res?.message)
+                setToLocalStorage(accessToken, res?.token)
+                dispatch(setUser(res?.data))
+                router.push(`/`)
+            }
+        } catch (error: any) {
+            // showErrorModal(error?.data?.errors)
+            console.log(error)
+            toast.error(error?.data?.error)
+        }
     };
 
 
@@ -44,9 +48,9 @@ export default function Signin() {
                 <Link href={'/'} className='flex items-center ml-5 gap-1 lg:my-0 my-5'><BsArrowLeft />Back to Home</Link>
                 <Image src={'/assets/vectors/register_vector.png'} width={500} height={200} alt='register_vector' className='mx-auto lg:block hidden' />
             </div>
-            <div className='my-auto flex flex-col lg:justify-center lg:mt-26 mt-14 h-[70vh] items-center'>
-                <div className='mb-8 text-center'>
-                    <h1 className='text-4xl mb-2 font-semibold text-slate-800'>Login</h1>
+            <div className='my-auto flex flex-col lg:justify-center px-16  items-center'>
+                <div className='mb-8 text-start w-full'>
+                    <h1 className='text-3xl mb-2 font-semibold text-slate-800'>Login</h1>
                     <p className='text-gray-500'>Join our community by login your account.</p>
                 </div>
                 <Form
@@ -57,7 +61,7 @@ export default function Signin() {
                     labelCol={{ flex: '25px' }}
                     autoComplete="off"
                     layout='vertical'
-                    className='lg:w-[70%] w-[90%]  mx-auto mb-0'
+                    className='w-full  mx-auto mb-0'
                 >
                     <Form.Item<Partial<IStudent>>
                         label="Email"

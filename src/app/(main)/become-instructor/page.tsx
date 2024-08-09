@@ -9,23 +9,24 @@ export default function BecomeInstructor() {
     const [createRequest] = useCreateTeacherRequestMutation();
     const handleSubmitRequest = async (values: any) => {
         try {
-            const res: any = await createRequest(values).unwrap()
-            if (res?.id) {
-                message.success("Request sent")
-            }
+            console.log(values)
+            // const res: any = await createRequest(values).unwrap()
+            // if (res?.id) {
+            //     message.success("Request sent")
+            // }
         } catch (error: any) {
             message.error(error?.data?.phone_number[0])
         }
     }
     return (
         <div className="h-full">
-            <div className="becomeInstructor   py-8  relative text-white overflow-hidden backdrop-filter:blur(4px)">
+            <div className="becomeInstructor   py-8  relative  overflow-hidden backdrop-filter:blur(4px)">
 
 
                 <Image src={'/assets/vectors/bshape_01.png'} width={50} height={100} alt="vector"
                     className="absolute left-[15px]  top-16 opacity-20" />
 
-                <div className="grid grid-cols-2  w-full text-black ">
+                <div className="grid grid-cols-2  w-full  ">
                     <div className="flex flex-col justify-start  items-start text-start  lg:pl-10 pt-20">
                         <h1 className="text-3xl">Become an <span className="text-blue-500 font-semibold">Instructor</span></h1>
                         <h1 className="text-3xl font-semibold">Join Our Teaching Community</h1>
@@ -36,7 +37,7 @@ export default function BecomeInstructor() {
 
 
 
-                    <div className=" lg:mx-16   mx-2 lg:my-6 my-0 rounded-lg px-5 pb-7 pt-14  bg-white ">
+                    <div className=" lg:mx-16   mx-2 lg:my-6 my-0 rounded-lg px-5 pt-8   bg-blue-50 ">
 
                         <Form
                             name="basic"
@@ -49,8 +50,17 @@ export default function BecomeInstructor() {
                             className='  mb-0 lg:grid lg:grid-cols-2 grid-cols-1 gap-x-5  '
                         >
                             <Form.Item<any>
-                                label="Full Name"
-                                name="fullName"
+                                label="First Name"
+                                name="firstName"
+                                className="w-full "
+                                rules={[{ required: true, message: 'Please input your Full name' }]}
+                            // style={{ marginBottom: '10px' }}
+                            >
+                                <Input className="py-2 w-full" />
+                            </Form.Item>
+                            <Form.Item<any>
+                                label="Last Name"
+                                name="lastName"
                                 className="w-full "
                                 rules={[{ required: true, message: 'Please input your Full name' }]}
                             // style={{ marginBottom: '10px' }}
@@ -60,7 +70,6 @@ export default function BecomeInstructor() {
                             <Form.Item<any>
                                 label="Email"
                                 name="email"
-
                                 rules={[{ required: true, message: 'Please input your email' }]}
                             // style={{ marginBottom: '10px' }}
                             >
@@ -78,18 +87,18 @@ export default function BecomeInstructor() {
                             <Form.Item<any>
                                 label="CV/Resume link"
                                 name="cv_resume"
-                                className=""
-                                rules={[{ required: true, message: 'Please input your phone number' }]}
+                                className="col-span-2"
+                                rules={[{ required: true, message: 'Please input your Cv/Resume link ' }]}
                             // style={{ marginBottom: '10px' }}
                             >
                                 <Input className="py-2" />
                             </Form.Item>
 
                             <Form.Item<any>
-                                label="Bio"
-                                name="bio"
+                                label="Description(Optional)"
+                                name="description"
                                 className="col-span-2"
-                                rules={[{ required: true, message: 'Please input your phone number' }]}
+                                rules={[{ required: false, message: 'Please input your Biodata' }]}
                             // style={{ marginBottom: '10px' }}
                             >
                                 <TextArea />
@@ -98,7 +107,6 @@ export default function BecomeInstructor() {
                                 <button type='submit' className='w-fit px-3 py-2 text-white py-1 rounded  text-md bg-blue-500'>
                                     Send Request
                                 </button>
-
                             </Form.Item>
                         </Form>
                     </div>

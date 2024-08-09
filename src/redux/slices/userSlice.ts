@@ -25,10 +25,10 @@ const initialState: InitialStateType = {
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async (token: string) => {
     const decoded: any = decodedToken(token)
-    const response = await fetch(`${getBaseUrl()}user/single/${decoded?.user_id}/`);
+    const response = await fetch(`${getBaseUrl()}/user/${decoded?.email}`);
     const data = await response.json();
     console.log(data)
-    return data;
+    return data.data;
 });
 export const fetchUserByRole = createAsyncThunk('user/fetchUserByRole', async ({ userId, role }: any) => {
     const response = await fetch(`${getBaseUrl()}user/${role}/${userId}/`);

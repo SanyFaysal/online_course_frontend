@@ -8,7 +8,7 @@ const userApi = baseApi.injectEndpoints({
             query: (data: IStudent) => {
 
                 return ({
-                    url: `/user/register/`,
+                    url: `/user/signup`,
                     method: "POST",
                     body: data
                 })

@@ -1,4 +1,5 @@
 'use client'
+
 import { accessToken } from "@/constants/storageKey";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { logoutUser } from "@/redux/slices/userSlice";
@@ -12,7 +13,7 @@ import { LuLayoutDashboard } from "react-icons/lu";
 
 export default function Navbar() {
     const dispatch = useAppDispatch()
-    const { user } = useAppSelector(state => state.auth)
+    const { user }: any = useAppSelector(state => state.auth)
 
     const handleLogout = () => {
         console.log({ clicked: true })
@@ -26,7 +27,7 @@ export default function Navbar() {
             <div className="lg:flex hidden gap-8">
                 <Link href={`/become-instructor`} className="flex gap-1 items-center">Become an Instructor</Link>
                 {
-                    user?.id ? <>
+                    user?._id ? <>
                         <Link href={`/dashboard/${user?.role}/home`} className="flex gap-1 items-center"> Dashboard</Link>
                         <p onClick={handleLogout} className="flex gap-1 items-center cursor-pointer">Sign out </p>
                     </> : <>
@@ -41,7 +42,7 @@ export default function Navbar() {
 
 
                 {
-                    user?.id ? <>
+                    user?._id ? <>
                         <Link href={`/dashboard/${user?.role}/home`} className="flex gap-1 items-center text-xl"> <LuLayoutDashboard /></Link>
                         <p onClick={handleLogout} className="flex gap-1 items-center cursor-pointer text-xl"><FaSignOutAlt /> </p>
                     </> : <>
