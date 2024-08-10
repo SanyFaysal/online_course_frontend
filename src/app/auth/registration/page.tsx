@@ -24,7 +24,7 @@ export default function StudentRegistration() {
 
     const onFinish = async (values: any) => {
         try {
-
+            values.role = 'user'
             const res: any = await createStudent(values).unwrap();
 
             if (res?.data?._id) {

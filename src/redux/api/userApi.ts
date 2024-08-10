@@ -18,7 +18,7 @@ const userApi = baseApi.injectEndpoints({
         loginUser: build.mutation({
             query: (data: Partial<IStudent>) => {
                 return ({
-                    url: `/user/login/`,
+                    url: `/user/login`,
                     method: "POST",
                     body: data
                 })
@@ -26,9 +26,19 @@ const userApi = baseApi.injectEndpoints({
             invalidatesTags: [tagTypes.user]
         }),
 
+        getAllUsers: build.query({
+            query: (data: Partial<IStudent>) => {
+                return ({
+                    url: `/user`,
+                    method: "get",
+                })
+            },
+            providesTags: [tagTypes.users]
+        }),
+
 
     }),
 
 })
 
-export const { useCreateStudentMutation, useLoginUserMutation } = userApi;
+export const { useCreateStudentMutation, useLoginUserMutation, useGetAllUsersQuery } = userApi;

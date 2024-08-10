@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { PiGearSix, PiSignOutLight, PiUserCircle } from 'react-icons/pi';
 import { BiDownArrow } from 'react-icons/bi';
 import { FaAngleDown } from 'react-icons/fa';
-import { removeFromLocalStorage } from '@/utils/local-storage';
+import { getFromLocalStorage, removeFromLocalStorage } from '@/utils/local-storage';
 import { accessToken } from '@/constants/storageKey';
 import { fetchUser, fetchUserByRole, logoutUser } from '@/redux/slices/userSlice';
 import { useParams, usePathname, useRouter } from 'next/navigation';
@@ -23,6 +23,7 @@ const { Header, Content, Footer, Sider } = Layout;
 
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+    const token = getFromLocalStorage(accessToken)
     const path = usePathname();
     const dispatch = useAppDispatch()
     const router = useRouter();
@@ -45,8 +46,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
     useEffect(() => {
         //@ts-ignore
-        dispatch(fetchUser(accessToken));
-    }, [accessToken])
+        dispatch(fetchUser(token));
+    }, [token])
 
     const items: MenuProps['items'] = [
         {

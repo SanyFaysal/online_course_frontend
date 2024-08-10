@@ -24,8 +24,13 @@ const initialState: InitialStateType = {
 }
 
 export const fetchUser = createAsyncThunk('user/fetchUser', async (token: string) => {
-    const decoded: any = decodedToken(token)
-    const response = await fetch(`${getBaseUrl()}/user/${decoded?.email}`);
+
+    const response = await fetch(`${getBaseUrl()}/user/me`, {
+        headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`
+        }
+    });
     const data = await response.json();
     console.log(data)
     return data.data;
