@@ -2,14 +2,14 @@ export enum tagTypes {
     user = "User",
     users = "Users",
     student = "Student",
-    teacher = "Teacher",
+    instructor = "Instructor",
     admin = "Admin",
     courses = "Courses",
     course = "Course",
     categories = "Categories",
     category = "Category",
-    teacherCourses = 'TeacherCourses',
-    teacherRequests = 'TeacherRequests',
+    instructorCourses = 'InstructorCourses',
+    instructorRequests = 'InstructorRequests',
     studentCourses = 'StudentCourses'
 
 }
@@ -18,13 +18,13 @@ export const tagTypesList = [
     tagTypes.user,
     tagTypes.users,
     tagTypes.student,
-    tagTypes.teacher,
+    tagTypes.instructor,
     tagTypes.admin,
     tagTypes.course,
     tagTypes.courses,
     tagTypes.categories,
     tagTypes.category,
-    tagTypes.teacherCourses,
+    tagTypes.instructorCourses,
     tagTypes.studentCourses,
-    tagTypes.teacherRequests
+    tagTypes.instructorRequests
 ];

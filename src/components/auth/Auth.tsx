@@ -11,7 +11,9 @@ export default function Auth({ children }: { children: React.ReactNode | React.R
     const token = getFromLocalStorage(accessToken) as string;
     useEffect(() => {
         //@ts-ignore
-        dispatch(fetchUser(token));
+        if (token) {
+            dispatch(fetchUser(token));
+        }
 
     }, [token])
     return (

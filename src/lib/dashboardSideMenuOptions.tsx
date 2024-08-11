@@ -40,16 +40,16 @@ const userItems = [
     getItem(<Link href={'/dashboard/student/my-courses'}>My Courses</Link>, '/dashboard/student/my-courses', <RxDashboard />),
 ]
 
-const teacherItems = [
-    getItem(<Link href={'/dashboard/teacher/home'}>Home</Link>, '/dashboard/teacher/home', <CiHome />),
-    getItem(<Link href={'/dashboard/teacher/create-course'}>Create Course</Link>, '/dashboard/teacher/create-course', <CiHome />),
+const instructorItems = [
+    getItem(<Link href={'/dashboard/instructor/home'}>Home</Link>, '/dashboard/instructor/home', <CiHome />),
+    getItem(<Link href={'/dashboard/instructor/create-course'}>Create Course</Link>, '/dashboard/instructor/create-course', <CiHome />),
 ]
 const adminItems = [
     getItem(<Link href={'/dashboard/admin/home'}>Home</Link>, '1', <CiHome />),
     getItem(<Link href={'/dashboard/admin/manage-users'}>Manage Users</Link>, '2', <TeamOutlined />),
-    getItem(<p>Teachers</p>, '/dashboard/admin/teacher', <UserOutlined />, [
-        getItem(<Link href={'/dashboard/admin/teacher/all-teachers'}>All Teachers</Link>, '/dashboard/admin/all-teachers'),
-        getItem(<Link href={'/dashboard/admin/teacher/teachers-requests'}>Teachers Requests</Link>, '/dashboard/admin/teachers-requests'),
+    getItem(<p>Instructor</p>, '/dashboard/admin/instructor', <UserOutlined />, [
+        getItem(<Link href={'/dashboard/admin/instructor/all-instructors'}>All Instructors</Link>, '/dashboard/admin/all-instructors'),
+        getItem(<Link href={'/dashboard/admin/instructor/instructor-requests'}>Instructor Requests</Link>, '/dashboard/admin/instructors-requests'),
     ]),
     getItem('Categories', '/dashboard/admin/categories', <UserOutlined />, [
         getItem(<Link href={'/dashboard/admin/categories/all-categories'}>All Categories</Link>, '/dashboard/admin/categories/all-categories'),
@@ -62,7 +62,7 @@ export const dashboardMenuItems: any = (role: string) => {
 
     const items: MenuItem[] =
         role === USER_ROLE.STUDENT ? studentItems :
-            role === USER_ROLE.TEACHER ? teacherItems :
+            role === USER_ROLE.TEACHER ? instructorItems :
                 role === USER_ROLE.ADMIN ? adminItems :
                     [];
 

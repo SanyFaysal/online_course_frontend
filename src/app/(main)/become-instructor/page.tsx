@@ -1,21 +1,23 @@
 'use client'
 
-import { useCreateTeacherRequestMutation } from "@/redux/api/teacherApi";
+import { useCreateInstructorRequestMutation } from "@/redux/api/instructorApi";
+import { useAppSelector } from "@/redux/hooks";
 import { Breadcrumb, Form, Input, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import Image from "next/image";
 
 export default function BecomeInstructor() {
-    const [createRequest] = useCreateTeacherRequestMutation();
+    const { user } = useAppSelector(state => state.auth)
+    const [createRequest] = useCreateInstructorRequestMutation();
     const handleSubmitRequest = async (values: any) => {
         try {
-            console.log(values)
-            // const res: any = await createRequest(values).unwrap()
-            // if (res?.id) {
-            //     message.success("Request sent")
-            // }
+            values.userId = user?._id;
+            const res: any = await createRequest(values).unwrap()
+            if (res) {
+                message.success("Request sent")
+            }
         } catch (error: any) {
-            message.error(error?.data?.phone_number[0])
+            message.error(error?.data?.error)
         }
     }
     return (
@@ -52,6 +54,7 @@ export default function BecomeInstructor() {
                             <Form.Item<any>
                                 label="First Name"
                                 name="firstName"
+                                initialValue={user?.firstName}
                                 className="w-full "
                                 rules={[{ required: true, message: 'Please input your Full name' }]}
                             // style={{ marginBottom: '10px' }}
@@ -61,6 +64,7 @@ export default function BecomeInstructor() {
                             <Form.Item<any>
                                 label="Last Name"
                                 name="lastName"
+                                initialValue={user?.lastName}
                                 className="w-full "
                                 rules={[{ required: true, message: 'Please input your Full name' }]}
                             // style={{ marginBottom: '10px' }}
@@ -70,6 +74,7 @@ export default function BecomeInstructor() {
                             <Form.Item<any>
                                 label="Email"
                                 name="email"
+                                initialValue={user?.email}
                                 rules={[{ required: true, message: 'Please input your email' }]}
                             // style={{ marginBottom: '10px' }}
                             >
@@ -78,6 +83,7 @@ export default function BecomeInstructor() {
                             <Form.Item<any>
                                 label="Phone Number"
                                 name="phoneNumber"
+                                initialValue={user?.phoneNumber}
                                 rules={[{ required: true, message: 'Please input your phone number' }]}
                             // style={{ marginBottom: '10px' }}
                             >
@@ -95,8 +101,8 @@ export default function BecomeInstructor() {
                             </Form.Item>
 
                             <Form.Item<any>
-                                label="Description(Optional)"
-                                name="description"
+                                label="Details(Optional)"
+                                name="details"
                                 className="col-span-2"
                                 rules={[{ required: false, message: 'Please input your Biodata' }]}
                             // style={{ marginBottom: '10px' }}

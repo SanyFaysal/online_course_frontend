@@ -49,8 +49,8 @@ export default function StudentRegistration() {
             </div>
             <div className=' w-full flex flex-col justify-center items-center'>
                 <div className='w-full px-16'>
-                    <h1 className='text-3xl  font-semibold text-slate-800 mb-8'>Register as    <span className='text-blue-500'>Student</span> </h1>
-
+                    <h1 className='text-3xl  font-semibold text-slate-800 '>Register </h1>
+                    <p className='mb-8 text-gray-500'>Join us today and become a part of our vibrant community</p>
                     <Form
                         name="basic"
                         labelWrap

@@ -4,8 +4,8 @@ import React from 'react';
 import { Space, Table, Tag } from 'antd';
 import type { TableProps } from 'antd';
 import { formatDate } from '@/utils/formatDate';
-import { useGetAllTeacherRequestsQuery } from '@/redux/api/teacherApi';
-import { filterTeacher } from '@/utils/filterTeacher';
+
+
 import Link from 'next/link';
 
 
@@ -58,12 +58,12 @@ const columns: TableProps<any>['columns'] = [
     },
 ];
 export default function AllTeachers() {
-    const { data }: any = useGetAllTeacherRequestsQuery(undefined)
-    const teachers = filterTeacher(data, false)
+    const { data }: any = { data: {} }
+
     return (
         <div>
             <h1 className='text-xl mb-2'>All Teachers</h1>
-            <Table columns={columns} dataSource={teachers as []} className='overflow-x-auto' />
+            {/* <Table columns={columns} dataSource={teachers as []} className='overflow-x-auto' /> */}
         </div>
     )
 };

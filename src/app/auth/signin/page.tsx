@@ -51,7 +51,7 @@ export default function Signin() {
             <div className='my-auto flex flex-col lg:justify-center px-16  items-center'>
                 <div className='mb-8 text-start w-full'>
                     <h1 className='text-3xl mb-2 font-semibold text-slate-800'>Login</h1>
-                    <p className='text-gray-500'>Join our community by login your account.</p>
+                    <p className='text-gray-500'>Welcome back! Log in to connect with our community.</p>
                 </div>
                 <Form
                     name="basic"
