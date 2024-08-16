@@ -90,7 +90,7 @@ export default function Signin() {
                 </Form>
 
                 <div>
-                    <h2 className='text-center '>Don't have any account ? <Link href={'/auth/registration'} className='text-blue-500'>Sign up</Link></h2>
+                    <h2 className='text-center '>Donot have any account ? <Link href={'/auth/registration'} className='text-blue-500'>Sign up</Link></h2>
                 </div>
             </div>
         </div >
