@@ -3,7 +3,7 @@
 import { accessToken } from "@/constants/storageKey"
 import { useGetAllCategoriesQuery } from "@/redux/api/categoryApi";
 import { useCreateCourseMutation, useGetAllCoursesQuery } from "@/redux/api/courseApi"
-import { useGetSingleTeacherQuery } from "@/redux/api/teacherApi";
+// import { useGetSingleTeacherQuery } from "@/redux/api/teacherApi";
 import { useAppSelector } from "@/redux/hooks";
 import { getFromLocalStorage } from "@/utils/local-storage"
 import { Form, Input, Select, message } from "antd";

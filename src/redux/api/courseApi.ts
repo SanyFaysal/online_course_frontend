@@ -28,7 +28,7 @@ const courseApi = baseApi.injectEndpoints({
                     body: data
                 })
             },
-            invalidatesTags: [tagTypes.teacherCourses, tagTypes.courses]
+            // invalidatesTags: [tagTypes?.teacherCourses, tagTypes.courses]
         }),
         getAllCourses: build.query({
             query: (token: string) => {

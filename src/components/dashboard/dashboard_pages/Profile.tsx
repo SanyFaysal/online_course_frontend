@@ -33,7 +33,7 @@ export default function Profile() {
 
                             {
                                 user?.role === USER_ROLE.TEACHER && <>
-                                    <p className="col-span-2 text-center font-semibold text-lg capitalize">{user?.role}'s Information</p>
+                                    <p className="col-span-2 text-center font-semibold text-lg capitalize">{user?.role}&apos;s Information</p>
 
                                     {Object?.keys(userByRole)?.map(key => <>
                                         <p className="text-end capitalize">{key} : </p>

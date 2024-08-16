@@ -4,7 +4,7 @@ import React from 'react';
 import { Space, Table, Tag } from 'antd';
 import type { TableProps } from 'antd';
 import { formatDate } from '@/utils/formatDate';
-import { useGetAllTeacherRequestsQuery } from '@/redux/api/teacherApi';
+// import { useGetAllTeacherRequestsQuery } from '@/redux/api/teacherApi';
 import { filterTeacher } from '@/utils/filterTeacher';
 import Link from 'next/link';
 import { useGetAllCategoriesQuery } from '@/redux/api/categoryApi';
