@@ -3,14 +3,14 @@
 import CourseCardForTeacher from "@/components/dashboard/dashboard_ui/CourseCardForTeacher";
 import EnrolledCourseCard from "@/components/dashboard/dashboard_ui/EnrolledCourseCard";
 import { accessToken } from "@/constants/storageKey";
-import { useGetTeacherCoursesQuery } from "@/redux/api/teacherApi";
+// import { useGetTeacherCoursesQuery } from "@/redux/api/teacherApi";
 import { useAppSelector } from "@/redux/hooks";
 import { getFromLocalStorage } from "@/utils/local-storage";
 
 export default function TeacherDashboardHome() {
     const { user, userByRole }: any = useAppSelector(state => state.auth);
     const token = getFromLocalStorage(accessToken);
-    const { data }: any = useGetTeacherCoursesQuery({ token, teacherId: userByRole?.id });
+    const { data }: any = {}
 
     return (
         <div>
